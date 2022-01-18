@@ -1,0 +1,10 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 20
+  username: lengchuanbao
+  password:
+
+development:
+  <<: *default
+  database: property_dev

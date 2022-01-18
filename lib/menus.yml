@@ -1,0 +1,8 @@
+admin:
+  menus:
+    mains:
+      actions:
+        'mains': show
+    communities:
+      actions:
+        'communities': all

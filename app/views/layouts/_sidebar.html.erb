@@ -1,0 +1,19 @@
+<div class="page-sidebar-wrapper">
+  <div class="page-sidebar navbar-collapse collapse">
+    <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top:20px;">
+      <li class="sidebar-search-wrapper"></li>
+      <li class="nav-item <%= current_nav_class(:mains, current: 'start active') %>">
+        <a href="<%= main_path%>">
+          <i class="icon-home"></i>
+          <span class="title">首页</span>
+        </a>
+      </li>
+      <li class="nav-item <%= current_nav_class(:communities, current: 'start active') %>">
+        <a href="<%= communities_path%>">
+          <i class="icon-user"></i>
+          <span class="title">社区管理</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
