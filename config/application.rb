@@ -19,5 +19,15 @@ module PropertyManagement
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.eager_load_paths += %W(#{config.root}/lib)
+
+    config.active_record.default_timezone = :local
+    config.time_zone = 'Beijing'
+
+    config.i18n.default_locale = :zh
+
+    config.encoding = "utf-8"
+
+    config.action_view.sanitized_allowed_tags = 'span', 'p', 'a', 'img', 'table', 'tr', 'td', 'li', 'ul',  'embed', 'em', 'strong', 'u'
+    config.action_view.sanitized_allowed_attributes = 'id', 'href', 'src', 'height', 'width', 'class', 'style', 'align', 'target'
   end
 end

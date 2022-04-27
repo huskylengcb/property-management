@@ -1,0 +1,15 @@
+<% if flash[:notice] %>
+  <script>
+  $(function(){
+    layer.msg('<%= flash[:notice] %>', {icon: 1})
+  })
+  </script>
+<% end %>
+
+<% if flash[:alert] %>
+  <script>
+  $(function(){
+    layer.msg('<%= flash[:alert] %>', {icon: 2})
+  })
+  </script>
+<% end %>

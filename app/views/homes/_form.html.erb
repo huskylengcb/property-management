@@ -1,0 +1,15 @@
+<%= simple_form_for [@home], wrapper: :admin_form do |f| %>
+  <%= f.error_notification %>
+  <div class="form-body">
+    <%= f.input :number, label: '住户号', autofocus: true, placeholder: '请填写住户号' %>
+    <%= f.input :tower_id, label: '所属楼号', collection: Tower.options_for_select, placeholder: '请选择楼号' %>
+  </div>
+  <div class="form-actions">
+    <div class="row">
+      <div class="col-md-offset-3 col-md-9">
+        <%= f.button :submit, '提交', class: 'btn green' %>
+        <%= link_to '取消', communities_path, class: 'btn' %>
+      </div>
+    </div>
+  </div>
+<% end %>

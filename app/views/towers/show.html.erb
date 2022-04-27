@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @tower %>
+
+<div>
+  <%= link_to "Edit this tower", edit_tower_path(@tower) %> |
+  <%= link_to "Back to towers", towers_path %>
+
+  <%= button_to "Destroy this tower", @tower, method: :delete %>
+</div>

@@ -61,6 +61,9 @@ gem 'simple_form'
 #组合查询
 gem 'ransack'
 
+# Use SCSS for stylesheets
+gem 'sass-rails'
+
 #设置默认值
 # gem "default_value_for", :git => "https://github.com/KevSlashNull/default_value_for.git"
 

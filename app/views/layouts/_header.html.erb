@@ -1,157 +1,43 @@
-  <!-- BEGIN HEADER -->
-  <div class="page-header navbar navbar-fixed-top">
-    <!-- BEGIN HEADER INNER -->
-    <div class="page-header-inner">
-      <!-- BEGIN LOGO -->
-      <div class="page-logo">
-        <a href="/admin/main" style="margin-top: 12px;font-size: 16px; text-decoration:none;">
-          测试
-        </a>
-        <div class="menu-toggler sidebar-toggler">
-          <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
-        </div>
-      </div>
-      <!-- END LOGO -->
-      <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-      <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+<div class="layui-header">
+  <div class="layui-logo layui-hide-xs layui-bg-black">layout demo</div>
+  <!-- 头部区域（可配合layui 已有的水平导航） -->
+  <ul class="layui-nav layui-layout-left">
+    <!-- 移动端显示 -->
+    <%
+=begin%>
+ <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft">
+      <i class="layui-icon layui-icon-spread-left"></i>
+    </li>
+    <li class="layui-nav-item layui-hide-xs"><a href="">nav 1</a></li>
+    <li class="layui-nav-item layui-hide-xs"><a href="">nav 2</a></li>
+    <li class="layui-nav-item layui-hide-xs"><a href="">nav 3</a></li>
+    <li class="layui-nav-item">
+      <a href="javascript:;">nav groups</a>
+      <dl class="layui-nav-child">
+        <dd><a href="">menu 11</a></dd>
+        <dd><a href="">menu 22</a></dd>
+        <dd><a href="">menu 33</a></dd>
+      </dl>
+    </li> 
+<%
+=end%>
+  </ul>
+  <ul class="layui-nav layui-layout-right">
+    <li class="layui-nav-item layui-hide layui-show-md-inline-block">
+      <a href="javascript:;">
+        <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" class="layui-nav-img">
+        tester
       </a>
-      <!-- END RESPONSIVE MENU TOGGLER -->
-      <!-- BEGIN TOP NAVIGATION MENU -->
-      <div class="top-menu">
-        <ul class="nav navbar-nav pull-right">
-          <!-- BEGIN NOTIFICATION DROPDOWN -->
-          <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-          <!--
-          <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-              <i class="icon-bell"></i>
-              <span class="badge badge-default">
-
-          7 </span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="external">
-                <h3><span class="bold">12 pending</span> notifications</h3>
-                <a href="extra_profile.html">view all</a>
-              </li>
-              <li>
-                <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
-                  <% 10.times do %>
-                  <li>
-                    <a href="javascript:;">
-                      <span class="time">just now</span>
-                      <span class="details">
-
-                  <span class="label label-sm label-icon label-success">
-
-                  <i class="fa fa-plus"></i>
-
-                  </span> New user registered. </span>
-                    </a>
-                  </li>
-                <% end %>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          -->
-          <!-- END NOTIFICATION DROPDOWN -->
-          <!-- BEGIN INBOX DROPDOWN -->
-          <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-          <!--
-          <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-              <i class="icon-envelope-open"></i>
-              <span class="badge badge-default">
-
-          4 </span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="external">
-                <h3>You have <span class="bold">7 New</span> Messages</h3>
-                <a href="page_inbox.html">view all</a>
-              </li>
-              <% 10.times do %>
-              <li>
-                <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
-                  <li>
-                    <a href="inbox.html?a=view">
-                      <span class="photo">
-
-                  <img src="/admin/assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
-
-                  </span>
-                      <span class="subject">
-
-                  <span class="from">
-
-                  Lisa Wong </span>
-                      <span class="time">Just Now </span>
-                      </span>
-                      <span class="message">
-
-                  Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                    </a>
-                  </li>
-                <% end %>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          -->
-          <!-- END INBOX DROPDOWN -->
-          <!-- BEGIN USER LOGIN DROPDOWN -->
-          <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-          <li class="dropdown dropdown-user">
-            <a href="#" class="current_user dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-              <i class="icon-user"></i>
-              <span class="username username-hide-on-mobile">
-                小花
-                <%#= current_user.try(:full_name) %>
-              </span>
-              <i class="fa fa-angle-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-default">
-              <!--
-              <li>
-                <a href="extra_profile.html">
-                  <i class="icon-user"></i> My Profile </a>
-              </li>
-              <li>
-                <a href="page_calendar.html">
-                  <i class="icon-calendar"></i> My Calendar </a>
-              </li>
-              <li>
-                <a href="inbox.html">
-                  <i class="icon-envelope-open"></i> My Inbox <span class="badge badge-danger">
-              3 </span>
-                </a>
-              </li>
-              <li>
-                <a href="page_todo.html">
-                  <i class="icon-rocket"></i> My Tasks <span class="badge badge-success">
-              7 </span>
-                </a>
-              </li>
-              <li class="divider">
-              </li>
-              <li>
-                <a href="extra_lock.html">
-                  <i class="icon-lock"></i> Lock Screen </a>
-              </li>
-              -->
-              <li>
-                <%#= link_to admin_logout_path, method: :delete, data: {confirm: '确定要注销吗？'}  do %>
-                  <i class="icon-key"></i>退出
-                <%# end %>
-              </li>
-            </ul>
-          </li>
-          <!-- END USER LOGIN DROPDOWN -->
-        </ul>
-      </div>
-      <!-- END TOP NAVIGATION MENU -->
-    </div>
-    <!-- END HEADER INNER -->
-  </div>
-  <!-- END HEADER -->
+      <dl class="layui-nav-child">
+        <dd><a href="">Your Profile</a></dd>
+        <dd><a href="">Settings</a></dd>
+        <dd><a href="">Sign out</a></dd>
+      </dl>
+    </li>
+    <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
+      <a href="javascript:;">
+        <i class="layui-icon layui-icon-more-vertical"></i>
+      </a>
+    </li>
+  </ul>
+</div>

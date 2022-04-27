@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: homes
+#
+#  id         :integer          not null, primary key
+#  number     :string
+#  tower_id   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  tower_id: 1
+
+two:
+  number: MyString
+  tower_id: 1

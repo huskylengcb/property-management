@@ -1,0 +1,74 @@
+<div class="portlet light">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="icon-list"></i>住户管理
+    </div>
+    <div class="actions">
+      <%= link_to new_tower_path, class: 'btn blue', 'data-no-turbolink' => true do %>
+        <i class="icon-plus"></i>
+        <span>创建</span>
+      <% end %>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="dataTables_wrapper no-footer">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <%= search_form_for @search, url: towers_path, class: 'form-inline' do |f| %>
+              <div class="form-group">
+                <%= f.label :name_cont, '楼号' %>
+                <%= f.text_field :name_cont, class: 'form-control', placeholder: '住户号' %>
+              </div>
+              <button type="submit" class="btn btn-default grey">搜索</button>
+          <% end %>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="dataTables_filter pull-right">
+          </div>
+        </div>
+      </div>
+      <div class="table-scrollable">
+        <table class="table table-striped table-bordered table-hover" id="sample_2">
+          <thead>
+          <tr>
+            <th>
+              楼号
+            </th>
+            <th>
+              创建时间
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+            <% @towers.each do |tower| %>
+              <tr>
+                <td>
+                  <%= tower.name %>
+                </td>
+                <td>
+                  <%= l tower.created_at %>
+                </td>
+                <td>
+                  <%= link_to edit_tower_path(tower), class: 'btn btn-xs blue' do %>
+                    <i class="fa fa-link"></i> 修改
+                  <% end %>
+                  <%= link_to tower_path(tower), class: 'btn btn-xs red', method: :delete, data: {confirm: '确定要删除吗？'} do %>
+                   <i class="fa fa-trash-o"></i> 删除
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="col-md-5 col-sm-12">
+          <div class="dataTables_info" id="sample_4_info"><%= paginate_info(@towers) %></div>
+        </div>
+        <div class="col-md-7 col-sm-12">
+          <%= paginate @towers %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

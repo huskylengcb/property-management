@@ -1,0 +1,5 @@
+zh:
+  community_verified_states:
+    unverified: '未认证'
+    applying: '认证申请中'
+    verified: '认证通过'

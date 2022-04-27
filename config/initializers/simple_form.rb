@@ -72,7 +72,7 @@ SimpleForm.setup do |config|
   config.error_notification_tag = :div
 
   # CSS class to add for error notification helper.
-  config.error_notification_class = 'error_notification'
+  config.error_notification_class = 'error_notification layui-font-red'
 
   # ID to add for error notification helper.
   # config.error_notification_id = nil
@@ -166,15 +166,15 @@ SimpleForm.setup do |config|
 end
 
 SimpleForm.setup do |config|
-  config.wrappers :admin_form, tag: 'div', class: 'form-group',
+  config.wrappers :admin_form, tag: 'div', class: 'layui-form-item',
                   hint_class: 'has-hint', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
-    b.use :label, class: 'col-md-2 control-label'
-    b.wrapper tag: 'div', class: 'col-md-4' do |append|
-      append.use :input, class: 'form-control'
-      append.use :hint, wrap_with: {tag: 'p', class: 'help-block'}
-      append.use :error, wrap_with: {tag: 'span', class: 'help-block'}
+    b.use :label, class: 'layui-form-label'
+    b.wrapper tag: 'div', class: 'layui-input-block' do |append|
+      append.use :input, class: 'layui-input'
+      append.use :hint, wrap_with: {tag: 'p', class: 'layui-bg-red'}
+      append.use :error, wrap_with: {tag: 'span', class: 'layui-bg-red'}
     end
   end
 end

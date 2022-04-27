@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  logo: MyString
+  name: MyString
+  position: 1
+  items_count: 1
+  state: 1
+
+two:
+  type: 
+  logo: MyString
+  name: MyString
+  position: 1
+  items_count: 1
+  state: 1

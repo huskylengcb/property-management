@@ -6,3 +6,6 @@ admin:
     communities:
       actions:
         'communities': all
+    categories:
+      actions:
+        'categories': all

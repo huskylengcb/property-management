@@ -5387,6 +5387,11 @@ jest-worker@^27.3.1:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
+jquery@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.npmjs.org/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
+  integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -5954,6 +5959,11 @@ mkdirp@^1.0.3, mkdirp@^1.0.4, mkdirp@~1.0.4:
   resolved "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
+"morphdom@>=2.6.0 <3.0.0":
+  version "2.6.1"
+  resolved "https://registry.npmjs.org/morphdom/-/morphdom-2.6.1.tgz#e868e24f989fa3183004b159aed643e628b4306e"
+  integrity sha512-Y8YRbAEP3eKykroIBWrjcfMw7mmwJfjhqdpSvoqinu8Y702nAwikpXcNFDiIkyvfCLxLM9Wu95RZqo4a9jFBaA==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -5965,6 +5975,13 @@ move-concurrently@^1.0.1:
     mkdirp "^0.5.1"
     rimraf "^2.5.4"
     run-queue "^1.0.3"
+
+mrujs@^0.7.4:
+  version "0.7.4"
+  resolved "https://registry.npmjs.org/mrujs/-/mrujs-0.7.4.tgz#7b4778e8845ece7b9136ada9dec843a36d5b55c7"
+  integrity sha512-IdFK+yIvGa0CuPFEPyMKbPYm8ZAIlW49INqHKKy/n8b1y/yDOZ/8kg7i1s1/0EyQHxQonzbHL/M1Pt35opNZNg==
+  dependencies:
+    morphdom ">=2.6.0 <3.0.0"
 
 ms@2.0.0:
   version "2.0.0"

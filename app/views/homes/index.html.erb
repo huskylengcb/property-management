@@ -1,0 +1,83 @@
+<div class="portlet light">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="icon-list"></i>住户管理
+    </div>
+    <div class="actions">
+      <%= link_to new_home_path, class: 'btn blue', 'data-no-turbolink' => true do %>
+        <i class="icon-plus"></i>
+        <span>创建</span>
+      <% end %>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="dataTables_wrapper no-footer">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <%= search_form_for @search, url: homes_path, class: 'form-inline' do |f| %>
+              <div class="form-group">
+                <%= f.label :name_cont, '社区名' %>
+                <%= f.text_field :name_cont, class: 'form-control', placeholder: '住户号' %>
+              </div>
+              <button type="submit" class="btn btn-default grey">搜索</button>
+          <% end %>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="dataTables_filter pull-right">
+          </div>
+        </div>
+      </div>
+      <div class="table-scrollable">
+        <table class="table table-striped table-bordered table-hover" id="sample_2">
+          <thead>
+          <tr>
+            <th>
+              住户号
+            </th>
+            <th>
+              所属楼层
+            </th>
+             <th>
+              创建时间
+            </th>
+            <th>
+              操作
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+            <% @homes.each do |home| %>
+              <tr>
+                <td>
+                  <%= home.number %>
+                </td>
+                <td>
+                  <%= home.tower.try(:name) %>
+                </td>
+                <td>
+                  <%= l home.created_at %>
+                </td>
+                <td>
+                  <%= link_to edit_home_path(home), class: 'btn btn-xs blue' do %>
+                    <i class="fa fa-link"></i> 修改
+                  <% end %>
+                  <%= link_to home_path(home), class: 'btn btn-xs red', method: :delete, data: {confirm: '确定要删除吗？'} do %>
+                    <i class="fa fa-trash-o"></i> 删除
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="col-md-5 col-sm-12">
+          <div class="dataTables_info" id="sample_4_info"><%= paginate_info(@homes) %></div>
+        </div>
+        <div class="col-md-7 col-sm-12">
+          <%= paginate @homes %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@ class CommunitiesController < ApplicationController
 
   # GET /communities or /communities.json
   def index
-    @search = Community.ransack(params[:q])
+    @search = Community.sorted.ransack(params[:q])
     @communities = @search.result.page(params[:page])
   end
 
@@ -26,11 +26,9 @@ class CommunitiesController < ApplicationController
 
     respond_to do |format|
       if @community.save
-        format.html { redirect_to community_url(@community), notice: "Community was successfully created." }
-        format.json { render :show, status: :created, location: @community }
+        format.html { redirect_to communities_url, notice: "Community was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @community.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,11 +37,9 @@ class CommunitiesController < ApplicationController
   def update
     respond_to do |format|
       if @community.update(community_params)
-        format.html { redirect_to community_url(@community), notice: "Community was successfully updated." }
-        format.json { render :show, status: :ok, location: @community }
+        format.html { redirect_to communities_url, notice: "Community was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @community.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,7 +50,6 @@ class CommunitiesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to communities_url, notice: "Community was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 
@@ -66,6 +61,6 @@ class CommunitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def community_params
-      params.require(:community).permit(:name, :adress, :phone, :verified)
+      params.require(:community).permit(:name, :address, :phone, :verified_state)
     end
 end
