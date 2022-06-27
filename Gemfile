@@ -64,6 +64,12 @@ gem 'ransack'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 
+gem 'faraday'
+gem 'faraday_middleware'
+
+#配置文件
+gem 'config'
+
 #设置默认值
 # gem "default_value_for", :git => "https://github.com/KevSlashNull/default_value_for.git"
 

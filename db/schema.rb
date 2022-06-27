@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_01_075844) do
+ActiveRecord::Schema.define(version: 2022_04_28_072905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "assets", comment: "附件表", force: :cascade do |t|
+  create_table "assets", force: :cascade do |t|
     t.string "type", comment: "类别（单表继承）"
     t.string "owner_type", comment: "所属对象"
     t.integer "owner_id", comment: "所属对象id"
@@ -23,10 +23,13 @@ ActiveRecord::Schema.define(version: 2022_03_01_075844) do
     t.string "file", comment: "附件"
     t.string "file_name", comment: "文件名"
     t.integer "file_size", comment: "文件大小"
+    t.string "user_type", comment: "所属用户类型"
+    t.integer "user_id", comment: "所属用户id"
     t.string "protect_token", comment: "删除token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["owner_type", "owner_id"], name: "index_assets_on_owner_type_and_owner_id"
+    t.index ["position"], name: "index_assets_on_position"
     t.index ["type"], name: "index_assets_on_type"
   end
 
@@ -64,18 +67,14 @@ ActiveRecord::Schema.define(version: 2022_03_01_075844) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", comment: "邮箱"
-    t.string "password_digest"
     t.string "nickname"
-    t.string "wechat_id", comment: "wechat_id"
-    t.jsonb "wechat_profile", comment: "wechat_profile"
-    t.string "description", comment: "描述"
-    t.string "code"
-    t.datetime "code_at"
-    t.string "auth_token", comment: "api token"
-    t.integer "state", comment: "状态"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "avatarUrl"
+    t.integer "gender"
+    t.string "phone"
+    t.string "open_id"
+    t.string "unionid"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
