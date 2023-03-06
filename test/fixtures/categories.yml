@@ -2,7 +2,7 @@
 #
 # Table name: categories
 #
-#  id          :integer          not null, primary key
+#  id          :bigint           not null, primary key
 #  type        :string
 #  logo        :string
 #  name        :string

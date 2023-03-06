@@ -1,0 +1,15 @@
+<%= simple_form_for [:admin, @admin_user], wrapper: :admin_form, html: { class: 'layui-form' } do |f| %>
+  <%= f.error_notification %>
+  <div class="form-body">
+    <%= f.input :login_name, label: '管理员账号：', autofocus: true %>
+    <%= f.input :password, label: '密码：', hint: '设置登录密码', placeholder: '如果不修改密码，请留空' %>
+    <%= f.input :password_confirmation, label: '确认密码：', hint: '重新输入一次密码' %>
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <%= f.button :submit, '提交', class: 'layui-btn' %>
+      <%= link_to '取消', admin_admin_users_path, class: 'layui-btn layui-btn-primary' %>
+    </div>
+  </div>
+<% end %>

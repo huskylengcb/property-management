@@ -1,5 +1,9 @@
+# == Route Map
+#
+
 Rails.application.routes.draw do
-  resources :categories
+  get 'welcome/index'
+
   resources :homes
   resources :towers
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -17,6 +21,31 @@ Rails.application.routes.draw do
         collection do
           post 'login'
         end
+      end
+      resources :users
+    end
+  end
+
+  get '/admin/login' => 'admin/sessions#new'
+
+  namespace :admin do
+    resource :main, only: [:show]
+    resource :session, only: [:new, :create, :destroy]
+    resources :admin_users
+    resources :categories do
+      member do
+        post :move
+      end
+    end
+
+    resources :adverts
+  end
+
+  #支持功能，如上传等
+  scope module: :support do
+    resources :uploads, path: 'upload', only: [:create, :destroy] do
+      collection do
+        post :wangedit
       end
     end
   end

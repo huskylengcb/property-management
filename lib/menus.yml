@@ -1,11 +1,14 @@
 admin:
   menus:
-    mains:
+    admin_mains:
       actions:
-        'mains': show
-    communities:
+        'admin/mains': all
+    admin_categories:
       actions:
-        'communities': all
-    categories:
+        'admin/categories': all
+    admin_adverts:
       actions:
-        'categories': all
+        'admin/adverts': all
+    admin_admin_users:
+      actions:
+        'admin/admin_users': all

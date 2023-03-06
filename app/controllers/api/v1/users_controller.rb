@@ -1,7 +1,7 @@
 class Api::V1::UsersController < Api::V1::BaseController
   before_action :set_user
 
-  def unpdate
+  def undate
     if @user.update(user_params)
       api_success
     else

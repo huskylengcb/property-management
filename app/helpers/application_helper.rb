@@ -17,4 +17,21 @@ module ApplicationHelper
     options.reverse_merge!(:current => 'active', :not_current => '')
     is_current_nav?(key, options) ? options[:current] : options[:not_current]
   end
+
+  def wangedit attribute=nil, from=nil, label=nil, value=nil, width: 835, height: 500
+    html = %{
+      <div class="layui-form-item">
+        <label class="layui-form-label">#{label}</label>
+        <div class="layui-input-block">
+          <textarea id="wangEditor-one" style="height: #{height}px;" name="#{from}[#{attribute}]">#{value}</textarea>
+        </div>
+      </div>
+      <script>
+        $(function(){
+          editorWang();
+        })
+      </script>
+    }
+    html.html_safe
+  end
 end

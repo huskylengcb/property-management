@@ -1,70 +1,82 @@
-<% if false  %>
-<div class="page-sidebar-wrapper">
-  <div class="page-sidebar navbar-collapse collapse">
-    <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top:20px;">
-      <li class="sidebar-search-wrapper"></li>
-      <li class="nav-item <%= current_nav_class(:mains, current: 'start active') %>">
-        <a href="<%= main_path%>">
-          <i class="icon-home"></i>
-          <span class="title">首页</span>
-        </a>
-      </li>
-      <li class="nav-item <%= current_nav_class(:communities, current: 'start active') %>">
-        <a href="<%= communities_path%>">
-          <i class="icon-user"></i>
-          <span class="title">社区管理</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
-<% end %>
-
 <div class="layui-side layui-bg-black">
   <div class="layui-side-scroll">
     <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
     <ul class="layui-nav layui-nav-tree" lay-filter="test">
-      <%
-=begin%>
- <li class="layui-nav-item layui-nav-itemed">
-        <a class="" href="javascript:;">menu group 1</a>
-        <dl class="layui-nav-child">
-          <dd><a href="javascript:;">menu 1</a></dd>
-          <dd><a href="javascript:;">menu 2</a></dd>
-          <dd><a href="javascript:;">menu 3</a></dd>
-          <dd><a href="">the links</a></dd>
-        </dl>
-      </li>
-      <li class="layui-nav-item">
-        <a href="javascript:;">menu group 2</a>
-        <dl class="layui-nav-child">
-          <dd><a href="javascript:;">list 1</a></dd>
-          <dd><a href="javascript:;">list 2</a></dd>
-          <dd><a href="">超链接</a></dd>
-        </dl>
-      </li> 
-<%
-=end%>
-      <li class="layui-nav-item <%= current_nav_class(:mains, current: 'layui-bg-green active') %>">
-        <a href="<%= main_path%>">
+      <li class="layui-nav-item <%= current_nav_class(:admin_mains, current: 'layui-bg-green active') %>">
+        <a href="<%= admin_main_path%>">
           <i class="layui-icon layui-icon-layer"></i>
           <span>首页</span>
         </a>
       </li>
-      <%
-=begin%>
- layui-nav-itemed 
-<%
-=end%>
-      <li class="layui-nav-item <%= current_nav_class(:categories, current: 'layui-nav-itemed', if: lambda { params[:type].in? Category.types }) %>">
-        <a class="" href="javascript:;">menu group 1</a>
+      <li class="layui-nav-item <%= current_nav_class(:admin_admin_users, current: 'layui-bg-green active') %>">
+        <a href="<%= admin_admin_users_path%>">
+          <i class="layui-icon layui-icon-layer"></i>
+          <span>管理员管理</span>
+        </a>
+      </li>
+      <li class="layui-nav-item <%= current_nav_class(:admin_categories, current: 'layui-nav-itemed', if: lambda { params[:type].in? Category.types }) %>">
+        <a href="javascript:;">
+          分类管理 <span class="arrow <%= current_nav_class(:admin_categories, current: 'open', if: lambda{ params[:type].in? Category.types }) %>"></span>
+        </a>
         <dl class="layui-nav-child">
-          <dd><a href="javascript:;">menu 1</a></dd>
-          <dd><a href="javascript:;">menu 2</a></dd>
-          <dd><a href="javascript:;">menu 3</a></dd>
-          <dd><a href="">the links</a></dd>
+          <% Category.types.each do |cat| %>
+            <dd class="<%= current_nav_class(:admin_categories, current: "layui-this", if: lambda{ params[:type] == cat }) %>">
+              <%= link_to "Category::#{cat}".constantize.human_name, admin_categories_path(type: cat) %>
+            </dd>
+          <% end %>
         </dl>
       </li>
+      <li class="layui-nav-item <%= current_nav_class(:admin_adverts, current: 'layui-bg-green active') %>">
+        <a href="<%= admin_adverts_path%>">
+          <i class="layui-icon layui-icon-layer"></i>
+          <span>广告管理</span>
+        </a>
+      </li>
+
+
+      <%
+=begin%>
+ <li class="nav-item <%= current_nav_class(:admin_system, current: 'start active open', if: lambda{ controller_path != 'admin/categories' || params[:type].in?(Category.types)}) %>">
+        <a href="javascript:;">
+          <i class="icon-settings"></i>
+          <span class="title">系统管理</span>
+          <% if is_current_nav?(:admin_system, if: lambda{ controller_path != 'admin/categories' || params[:type].in?(Category.types)}) %>
+            <span class="selected"></span>
+          <% end %>
+          <span class="arrow <%= current_nav_class(:admin_system, current: 'open') %>"></span>
+        </a>
+        <ul class="sub-menu">
+          <ul class="sub-menu" style="display: block;">
+            <li class="<%= current_nav_class(:admin_system_admin_users) %> <%= show?(admin_admin_users_path)%>">
+              <%= link_to '系统管理员', admin_admin_users_path %>
+            </li>
+            <li class="<%= current_nav_class(:admin_system_categories, current: 'open', if: lambda{ params[:type].in? Category.types}) %> <%= show?(admin_categories_path)%>">
+              <a href="javascript:;">
+                分类管理 <span class="arrow <%= current_nav_class(:admin_system_categories, current: 'open', if: lambda{ params[:type].in? Category.types }) %>"></span>
+              </a>
+              <ul class="sub-menu" style="display: <%= current_nav_class(:admin_system_categories, current: 'block', if: lambda{ params[:type].in? Category.types }) %>;">
+                <% Category.types.each do |cat| %>
+                  <li class="<%= current_nav_class(:admin_system_categories, if: lambda{ params[:type] == cat }) %>">
+                    <%= link_to "Category::#{cat}".constantize.human_name, admin_categories_path(type: cat) %>
+                  </li>
+                <% end %>
+              </ul>
+            </li>
+          </ul>
+        </ul>
+      </li> 
+<%
+=end%>
+
+
+
+
+
+
+
+
+
+
       <li class="layui-nav-item">
         <a class="" href="javascript:;">menu group 2</a>
         <dl class="layui-nav-child">

@@ -3,3 +3,5 @@ zh:
     unverified: '未认证'
     applying: '认证申请中'
     verified: '认证通过'
+  advert_states:
+    normal: '正常'

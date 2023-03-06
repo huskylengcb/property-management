@@ -1,0 +1,52 @@
+
+      <%
+=begin%>
+ <% if flash[:alert] %>
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <%= flash[:alert] %>
+          </div>
+          <script>
+            setTimeout(function(){
+              $('.alert-danger').slideUp();
+            }, 3000)
+          </script>
+      <% end %> 
+<%
+=end%>
+
+
+
+<%
+=begin%>
+ <div class="layui-card">
+  <div class="layui-col-md6">
+    <div class="layui-panel">
+      <%= simple_form_for AdminUser.new, as: :admin_user, url: admin_session_path, method: :post do |f| %>
+        <fieldset id="">
+          <legend>管理员登录</legend>
+          <%= f.input :login_name, label: '管理员账号：', placeholder: '请输入用户名' %>
+          <%= f.input :password, label: '密码：', required: false, placeholder: '请输入密码' %>
+          <%= f.button :submit, '登录', class: :'btn-block login-btn' %>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+</div> 
+<%
+=end%>
+<div class="content">
+  <div class="layui-card">
+    <div class="layui-card-body">
+      <%= simple_form_for AdminUser.new, as: :admin_user, url: admin_session_path, method: :post do |f| %>
+        <fieldset id="">
+          <legend>管理员登录</legend>
+          <%= f.input :login_name, placeholder: '请输入用户名' %>
+          <%= f.input :password, required: false, placeholder: '请输入密码' %>
+          <%= f.button :submit, '登录', class: :'btn-block login-btn' %>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+</div>
+

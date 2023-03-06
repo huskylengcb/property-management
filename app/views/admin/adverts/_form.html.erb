@@ -1,0 +1,23 @@
+<%= content_for :page_level_scripts do %>
+  <%= javascript_include_tag '/wangEditor/dist/js/editorWang.js' %>
+<% end %>
+<%= simple_form_for [:admin, @advert], wrapper: :admin_form, html: { class: 'layui-form' } do |f| %>
+  <%= f.error_notification %>
+  <div class="form-body">
+    <%= f.input :name, label: '名称：', autofocus: true, placeholder: '', hint: '' %>
+    <%= f.input :category_id, label: '分类：', collection: Category::AdvertCategory.options_for_select, autofocus: true, placeholder: '', hint: '' %>
+    <%
+    <%= wangedit :description, :advert, '广告内容：', @advert.description%>
+    <%= f.input :phone, label: '联系电话：', autofocus: true, placeholder: '', hint: '' %>
+    <%= f.input :wechat, label: '微信号：', autofocus: true, placeholder: '', hint: '' %>
+    <%= f.input :state, label: '状态：', collection: Advert.options_for_select(:states), autofocus: true, placeholder: '', hint: '' %>
+    <%= f.input :user_id, label: '发布人：', collection: User.pluck(:nickname, :id), disabled: true, autofocus: true, placeholder: '', hint: '' %>
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <%= f.button :submit, '提交', class: 'layui-btn' %>
+      <%= link_to '取消', admin_adverts_path, class: 'layui-btn layui-btn-primary' %>
+    </div>
+  </div>
+<% end %>

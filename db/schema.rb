@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_28_072905) do
-
+ActiveRecord::Schema[7.0].define(version: 2023_03_08_074916) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "adverts", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "category_id"
+    t.string "phone"
+    t.string "wechat"
+    t.integer "user_id"
+    t.integer "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "assets", force: :cascade do |t|
     t.string "type", comment: "类别（单表继承）"
@@ -26,8 +37,10 @@ ActiveRecord::Schema.define(version: 2022_04_28_072905) do
     t.string "user_type", comment: "所属用户类型"
     t.integer "user_id", comment: "所属用户id"
     t.string "protect_token", comment: "删除token"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "width"
+    t.integer "height"
     t.index ["owner_type", "owner_id"], name: "index_assets_on_owner_type_and_owner_id"
     t.index ["position"], name: "index_assets_on_position"
     t.index ["type"], name: "index_assets_on_type"
@@ -40,8 +53,8 @@ ActiveRecord::Schema.define(version: 2022_04_28_072905) do
     t.integer "position"
     t.integer "items_count"
     t.integer "state"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "communities", force: :cascade do |t|
@@ -49,21 +62,21 @@ ActiveRecord::Schema.define(version: 2022_04_28_072905) do
     t.string "address"
     t.string "phone"
     t.integer "verified_state", default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "homes", force: :cascade do |t|
     t.string "number"
     t.integer "tower_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "towers", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,8 +86,12 @@ ActiveRecord::Schema.define(version: 2022_04_28_072905) do
     t.string "phone"
     t.string "open_id"
     t.string "unionid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "login_name"
+    t.string "password_digest"
+    t.integer "role"
+    t.string "type"
   end
 
 end

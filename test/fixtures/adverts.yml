@@ -1,0 +1,33 @@
+# == Schema Information
+#
+# Table name: adverts
+#
+#  id          :bigint           not null, primary key
+#  description :text
+#  name        :string
+#  phone       :string
+#  state       :integer
+#  wechat      :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  category_id :integer
+#  user_id     :integer
+#
+
+one:
+  name: MyString
+  description: MyText
+  category_id: 1
+  phone: MyString
+  wechat: MyString
+  user_id: 1
+  status: 1
+
+two:
+  name: MyString
+  description: MyText
+  category_id: 1
+  phone: MyString
+  wechat: MyString
+  user_id: 1
+  status: 1

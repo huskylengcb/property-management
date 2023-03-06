@@ -2,7 +2,7 @@
 #
 # Table name: homes
 #
-#  id         :integer          not null, primary key
+#  id         :bigint           not null, primary key
 #  number     :string
 #  tower_id   :integer
 #  created_at :datetime         not null
