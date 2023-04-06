@@ -12,3 +12,6 @@ admin:
     admin_admin_users:
       actions:
         'admin/admin_users': all
+    admin_users:
+      actions:
+        'admin/users': all

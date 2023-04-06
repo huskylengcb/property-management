@@ -27,11 +27,13 @@ Rails.application.routes.draw do
   end
 
   get '/admin/login' => 'admin/sessions#new'
+  delete '/admin/logout' => 'admin/sessions#destroy'
 
   namespace :admin do
     resource :main, only: [:show]
     resource :session, only: [:new, :create, :destroy]
     resources :admin_users
+    resources :users
     resources :categories do
       member do
         post :move

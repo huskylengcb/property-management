@@ -25,4 +25,8 @@ class User < ApplicationRecord
       json.(self, :id, :nickname, :avatarUrl, :gender, :phone)
     end.attributes!
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["nickname"]
+  end
 end

@@ -6,7 +6,6 @@
   <div class="form-body">
     <%= f.input :name, label: '名称：', autofocus: true, placeholder: '', hint: '' %>
     <%= f.input :category_id, label: '分类：', collection: Category::AdvertCategory.options_for_select, autofocus: true, placeholder: '', hint: '' %>
-    <%
     <%= wangedit :description, :advert, '广告内容：', @advert.description%>
     <%= f.input :phone, label: '联系电话：', autofocus: true, placeholder: '', hint: '' %>
     <%= f.input :wechat, label: '微信号：', autofocus: true, placeholder: '', hint: '' %>

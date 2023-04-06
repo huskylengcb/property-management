@@ -7,7 +7,6 @@
           <div class="layui-col-md11">
             <%= search_form_for @search, url: admin_admin_users_path, class: 'form-inline layui-form' do |f| %>
               <div class="layui-form-item layui-inline">
-                <%= hidden_field_tag :type, params[:type]%>
                 <%= f.label :login_name_cont, '登录名', class: "layui-form-label layui-inline" %>
                 <%= f.text_field :login_name_cont, class: 'layui-input-inline layui-input', placeholder: '标题名' %>
               </div>
@@ -15,7 +14,7 @@
             <% end %>
           </div>
           <div class="layui-col-md1">
-            <%= link_to new_admin_admin_user_path(type: params[:type]), class: 'layui-btn layui-btn-normal layui-btn-sm', 'data-no-turbolink' => true do %>
+            <%= link_to new_admin_admin_user_path, class: 'layui-btn layui-btn-normal layui-btn-sm', 'data-no-turbolink' => true do %>
               <i class="layui-icon layui-icon-edit" style="font-size: 12px"></i>
               <span>创建</span>
             <% end %>
@@ -52,10 +51,10 @@
                   <%= l admin_user.created_at.to_datetime %>
                 </td>
                 <td>
-                  <%= link_to edit_admin_admin_user_path(admin_user, type: params[:type]), 'data-no-turbolink' => true, class: 'layui-btn layui-btn-xs layui-float-left' do %>
+                  <%= link_to edit_admin_admin_user_path(admin_user), 'data-no-turbolink' => true, class: 'layui-btn layui-btn-xs layui-float-left' do %>
                     <i class="fa fa-link"></i> 修改
                   <% end %>
-                  <%= link_to admin_admin_user_path(admin_user, type: params[:type]), class: 'layui-btn layui-btn-xs layui-btn-danger layui-float-left layout-margin-left-4', data: { turbo: true, turbo_method: :delete, turbo_confirm: '确定要删除吗？' } do %>
+                  <%= link_to admin_admin_user_path(admin_user), class: 'layui-btn layui-btn-xs layui-btn-danger layui-float-left layout-margin-left-4', data: { turbo: true, turbo_method: :delete, turbo_confirm: '确定要删除吗？' } do %>
                     <i class="fa fa-trash-o"></i> 删除
                   <% end %>
                 </td>

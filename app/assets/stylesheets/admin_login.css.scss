@@ -15,7 +15,7 @@
     float: none;
     box-shadow: 0 0 15px rgba(47, 47, 47, 0.4);
     .simple_form {
-      padding: 35px;
+      padding: 20px;
       fieldset {
         min-width: 0;
         padding: 0;
@@ -33,7 +33,67 @@
           margin-bottom: 20px;
           line-height: inherit;
         }
+        .input {
+          label {
+            display: none;
+          }
+          input {
+            height: 45px;
+            font-size: 16px;
+            color: #333;
+            padding: 6px 12px 6px 50px;
+            border: 1px solid #aaa;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+          }
+        }
+        .layui-icon {
+          position: relative;
+          top: -35px;
+          left: 10px;
+          font-size: 26px;
+          color: #333;
+        }
+        .login-btn {
+          display: block;
+          width: 210px;
+          height: 50px;
+          line-height: 36px;
+          font-size: 16px;
+          margin: 0 auto 10px;
+        }
       }
     }
+  }
+}
+.alert, .alert-danger {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin-left: -415px;
+  width: 830px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  button {
+    position: relative;
+    top: -2px;
+    color: inherit;
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .2;
   }
 }

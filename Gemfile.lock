@@ -70,6 +70,7 @@ GEM
       activerecord (>= 4.2)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
+    aes (0.5.1)
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
@@ -216,6 +217,8 @@ GEM
     msgpack (1.6.0)
     msgpack (1.6.0-java)
     multipart-post (2.3.0)
+    net-http (0.3.2)
+      uri
     net-imap (0.3.4)
       date
       net-protocol
@@ -332,6 +335,7 @@ GEM
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2022.7)
       tzinfo (>= 1.0.0)
+    uri (0.12.1)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -365,6 +369,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list
+  aes (~> 0.5.1)
   annotate
   bcrypt (~> 3.1.7)
   bootsnap
@@ -380,6 +385,10 @@ DEPENDENCIES
   jbuilder
   kaminari
   mini_magick
+  net-http
+  net-imap
+  net-protocol
+  net-smtp
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4.2)

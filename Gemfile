@@ -76,6 +76,13 @@ gem "carrierwave"
 #设置默认值
 # gem "default_value_for"
 
+gem 'aes', '~> 0.5.1'
+
+gem 'net-http', require: false
+gem 'net-imap', require: false
+gem 'net-protocol', require: false
+gem 'net-smtp', require: false
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

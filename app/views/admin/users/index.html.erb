@@ -1,0 +1,94 @@
+<div class="layui-container">
+  <div class="layui-row portlet-title">
+    <fieldset class="layui-elem-field">
+      <legend>人员管理</legend>
+      <div class="layui-field-box">
+        <div class="layui-row">
+          <div class="layui-col-md11">
+            <%= search_form_for @search, url: admin_users_path, class: 'form-inline layui-form' do |f| %>
+              <div class="layui-form-item layui-inline">
+                <%= f.label :nickname_cont, '昵称', class: "layui-form-label layui-inline" %>
+                <%= f.text_field :nickname_cont, class: 'layui-input-inline layui-input', placeholder: '昵称' %>
+              </div>
+              <button type="submit" class="layui-form-item layui-btn layui-btn-primary layui-inline">搜索</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="portlet-body">
+    <div class="dataTables_wrapper no-footer">
+      <div class="table-scrollable">
+        <table class="layui-table" id="sample_2">
+          <thead>
+            <tr>
+              <th>
+                昵称
+              </th>
+              <th>
+                电话
+              </th>
+              <th>
+                头像
+              </th>
+              <th>
+                性别
+              </th>
+              <th>
+                管理员
+              </th>
+              <th>
+                创建时间
+              </th>
+              <th>
+                操作
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td>
+                  <%= user.nickname %>
+                </td>
+                <td>
+                  <%= user.phone %>
+                </td>
+                <td>
+                  <%= user.nickname %>
+                </td>
+                <td>
+                  <%= user.gender %>
+                </td>
+                <td>
+                  <%= user.gender %>
+                </td>
+                <td>
+                  <%= l user.created_at.to_datetime %>
+                </td>
+                <td>
+                  <%= link_to edit_admin_user_path(user), 'data-no-turbolink' => true, class: 'layui-btn layui-btn-xs layui-float-left' do %>
+                    <i class="fa fa-link"></i> 修改
+                  <% end %>
+                  <%= link_to admin_user_path(user), class: 'layui-btn layui-btn-xs layui-btn-danger layui-float-left layout-margin-left-4', data: { turbo: true, turbo_method: :delete, turbo_confirm: '确定要删除吗？' } do %>
+                    <i class="fa fa-trash-o"></i> 删除
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="col-md-5 col-sm-12">
+          <div class="dataTables_info" id="sample_4_info"><%= paginate_info(@users) %></div>
+        </div>
+        <div class="col-md-7 col-sm-12">
+          <%= paginate @users %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

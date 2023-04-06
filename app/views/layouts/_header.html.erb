@@ -26,12 +26,20 @@
     <li class="layui-nav-item layui-hide layui-show-md-inline-block">
       <a href="javascript:;">
         <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" class="layui-nav-img">
-        tester
+        <%= current_user.try(:login_name) %>
       </a>
       <dl class="layui-nav-child">
-        <dd><a href="">Your Profile</a></dd>
-        <dd><a href="">Settings</a></dd>
-        <dd><a href="">Sign out</a></dd>
+        <%
+=begin%>
+ <dd><a href="">Your Profile</a></dd>
+        <dd><a href="">Settings</a></dd> 
+<%
+=end%>
+        <dd>
+          <%= link_to admin_logout_path, data: { turbo: true, turbo_method: :delete, turbo_confirm: '确定要注销吗？' }  do %>
+            <i class="icon-key"></i>退出
+          <% end %>
+        </dd>
       </dl>
     </li>
     <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
