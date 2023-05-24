@@ -23,6 +23,7 @@ Rails.application.routes.draw do
         end
       end
       resources :users
+      resources :adverts
     end
   end
 
@@ -40,7 +41,12 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :adverts
+    resources :adverts do
+      member do
+        post :move
+        patch :switch
+      end
+    end
   end
 
   #支持功能，如上传等

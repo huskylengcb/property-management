@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id              :bigint           not null, primary key
-#  avatarUrl       :string
+#  avatar_url      :string
 #  gender          :integer
 #  login_name      :string
 #  nickname        :string
@@ -22,11 +22,17 @@ class User < ApplicationRecord
 
   def detail_builder
     Jbuilder.new do |json|
-      json.(self, :id, :nickname, :avatarUrl, :gender, :phone)
+      json.(self, :id, :nickname, :avatar_url, :gender, :phone)
     end.attributes!
   end
 
   def self.ransackable_attributes(auth_object = nil)
     ["nickname"]
   end
+
+  def self.generate_nickname
+  
+  end
+  
+
 end

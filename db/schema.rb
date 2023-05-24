@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_08_074916) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_16_083221) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_074916) do
     t.integer "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position"
+    t.integer "show_type"
   end
 
   create_table "assets", force: :cascade do |t|
@@ -81,7 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_074916) do
 
   create_table "users", force: :cascade do |t|
     t.string "nickname"
-    t.string "avatarUrl"
+    t.string "avatar_url"
     t.integer "gender"
     t.string "phone"
     t.string "open_id"

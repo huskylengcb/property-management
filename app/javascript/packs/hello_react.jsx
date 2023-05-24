@@ -6,9 +6,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
-const Hello = props => (
-  <div>Hello {props.name}!sss</div>
-)
+const Hello = props => {
+  console.log(999888)
+  window.sayHello()
+  return (<div>Hello {props.name}!sss</div>)
+}
 
 Hello.defaultProps = {
   name: 'David'

@@ -1,11 +1,11 @@
 class Api::V1::UsersController < Api::V1::BaseController
   before_action :set_user
 
-  def undate
+  def update
     if @user.update(user_params)
-      api_success
+      api_success(message: '更新成功')
     else
-      api_error
+      api_error(message: '更新失败')
     end
   end
 
@@ -16,6 +16,6 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:nickname, :avatarUrl)
+    params.require(:user).permit(:nickname, :avatar_url, :gender)
   end
 end

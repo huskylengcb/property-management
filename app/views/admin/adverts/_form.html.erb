@@ -4,13 +4,20 @@
 <%= simple_form_for [:admin, @advert], wrapper: :admin_form, html: { class: 'layui-form' } do |f| %>
   <%= f.error_notification %>
   <div class="form-body">
-    <%= f.input :name, label: '名称：', autofocus: true, placeholder: '', hint: '' %>
-    <%= f.input :category_id, label: '分类：', collection: Category::AdvertCategory.options_for_select, autofocus: true, placeholder: '', hint: '' %>
-    <%= wangedit :description, :advert, '广告内容：', @advert.description%>
-    <%= f.input :phone, label: '联系电话：', autofocus: true, placeholder: '', hint: '' %>
-    <%= f.input :wechat, label: '微信号：', autofocus: true, placeholder: '', hint: '' %>
-    <%= f.input :state, label: '状态：', collection: Advert.options_for_select(:states), autofocus: true, placeholder: '', hint: '' %>
-    <%= f.input :user_id, label: '发布人：', collection: User.pluck(:nickname, :id), disabled: true, autofocus: true, placeholder: '', hint: '' %>
+    <%= f.input :name, label: '名称', autofocus: true, placeholder: '', hint: '' %>
+    <div class="layui-form-item">
+      <label class="layui-form-label">广告图片</label>
+      <div class="layui-input-block">
+        <%= webuploader_tag :image_id, label: '图片：', type: 'advert_image', asset: @advert.image %>
+      </div>
+    </div>
+    <%= f.input :category_id, label: '分类', collection: Category::AdvertCategory.options_for_select, autofocus: true, placeholder: '', hint: '' %>
+    <%= wangedit :description, :advert, '广告内容', @advert.description%>
+    <%= f.input :phone, label: '联系电话', autofocus: true, placeholder: '', hint: '' %>
+    <%= f.input :wechat, label: '微信号', autofocus: true, placeholder: '', hint: '' %>
+    <%= f.input :show_type, label: '展示方式', collection: Advert.options_for_select(:show_types), autofocus: true %>
+    <%= f.input :state, label: '状态', collection: Advert.options_for_select(:states), autofocus: true, placeholder: '', hint: '' %>
+    <%= f.input :user_id, label: '发布人', collection: User.pluck(:nickname, :id), disabled: true, autofocus: true, placeholder: '', hint: '' %>
   </div>
 
   <div class="layui-form-item">
@@ -20,3 +27,9 @@
     </div>
   </div>
 <% end %>
+
+<script>
+$(function(){
+  initImageWebuploader($('#webuploader'));
+})
+</script>

@@ -2,7 +2,7 @@ require 'json'
 
 module Wx
   class Client
-    def initialize(type=:default)
+    def initialize
       @conn = Faraday.new(url: 'https://api.weixin.qq.com', ssl: { verify: false }, headers: { 'Content-Type' => 'application/json' }) do |faraday|
         faraday.adapter Faraday.default_adapter
         faraday.request :json

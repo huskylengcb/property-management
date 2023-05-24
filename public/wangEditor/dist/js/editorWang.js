@@ -1,5 +1,4 @@
 function editorWang(menus) {
-  console.log(99999999999999)
   var editor = new wangEditor('wangEditor-one');
 
   // 上传图片（举例）

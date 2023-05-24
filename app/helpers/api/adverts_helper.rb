@@ -1,0 +1,2 @@
+module Api::AdvertsHelper
+end

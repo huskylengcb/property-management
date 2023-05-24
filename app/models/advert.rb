@@ -6,6 +6,8 @@
 #  description :text
 #  name        :string
 #  phone       :string
+#  position    :integer
+#  show_type   :integer
 #  state       :integer
 #  wechat      :string
 #  created_at  :datetime         not null
@@ -17,15 +19,32 @@ class Advert < ApplicationRecord
   validates :name, :category_id, presence: true
   validates :name, :length => { :maximum => 20 }
 
-  enum state: { normal: 0 }
+  enum state: { visible: 0, hidden: 1 }
+  enum show_type: { ordinary: 0, carousel: 1 }
+
+  acts_as_list column: :position
+
+  include HasAsset
+  has_one_asset :image, class_name: 'Asset::AdvertImage'
 
   belongs_to :category, class_name: 'Category::AdvertCategory', foreign_key: :category_id
 
+  scope :sorted, -> { order(position: :desc) }
+
   after_initialize do
-    self.state = 0 if state.blank?
+    self.state = :visiable if state.blank?
+    self.show_type = :ordinary if show_type.blank?
   end
 
   def self.ransackable_attributes(auth_object = nil)
     ["name"]
+  end
+
+  def detail_builder
+    Jbuilder.new do |json|
+      json.(self, :id, :name, :description, :phone, :wechat, :state, :user_id)
+      json.created_at self.created_at.strftime("%Y-%m-%d %H:%M")
+      json.updated_at self.updated_at.strftime("%Y-%m-%d %H:%M")
+    end.attributes!
   end
 end

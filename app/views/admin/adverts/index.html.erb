@@ -32,13 +32,22 @@
           <thead>
             <tr>
               <th>
-                分类
+                广告分类
               </th>
               <th>
                 名称
               </th>
               <th>
+                展示方式
+              </th>
+              <th>
+                状态
+              </th>
+              <th>
                 创建时间
+              </th>
+              <th>
+                排序
               </th>
               <th>
                 操作
@@ -55,14 +64,29 @@
                   <%= advert.name %>
                 </td>
                 <td>
+                  <%= advert.enum_name(:show_type) %>
+                </td>
+                <td>
+                  <%= link_to switch_admin_advert_path(advert), data: { turbo: true, turbo_method: :patch, turbo_confirm: "确定#{ advert.visible? ? '隐藏' : '显示'}吗？" }, class: "#{advert.visible? ? 'bg-green' : 'bg-orange'} layui-btn layui-btn-xs" do %>
+                    <%= advert.visible? ? '显示' : '隐藏' %>
+                    <i class="layui-icon layui-icon-eye <%= advert.visible? ? 'layui-icon-eye' : 'layui-icon-eye-invisible' %>"></i>
+                  <% end %>
+                </td>
+                <td>
                   <%= l advert.created_at.to_datetime %>
                 </td>
                 <td>
-                  <%= link_to edit_admin_advert_path(advert, type: params[:type]), 'data-no-turbolink' => true, class: 'layui-btn layui-btn-xs layui-float-left' do %>
-                    <i class="fa fa-link"></i> 修改
+                  <%= link_to '顶部', move_admin_advert_path(advert, to: :to_top), data: { turbo: true, turbo_method: :post }, class: 'layui-btn-sm text-underline' %>
+                  <%= link_to '上', move_admin_advert_path(advert, to: :higher), data: { turbo: true, turbo_method: :post }, class: 'layui-btn-sm text-underline' %>
+                  <%= link_to '下', move_admin_advert_path(advert, to: :lower), data: { turbo: true, turbo_method: :post }, class: 'layui-btn-sm text-underline' %>
+                  <%= link_to '底部', move_admin_advert_path(advert, to: :to_bottom), data: { turbo: true, turbo_method: :post }, class: 'layui-btn-sm text-underline' %>
+                </td>
+                <td>
+                  <%= link_to edit_admin_advert_path(advert), 'data-no-turbolink' => true, class: 'layui-btn layui-btn-xs layui-float-left' do %>
+                    <i class="layui-icon layui-icon-edit"></i> 修改
                   <% end %>
-                  <%= link_to admin_advert_path(advert, type: params[:type]), class: 'layui-btn layui-btn-xs layui-btn-danger layui-float-left layout-margin-left-4', data: { turbo: true, turbo_method: :delete, turbo_confirm: '确定要删除吗？' } do %>
-                    <i class="fa fa-trash-o"></i> 删除
+                  <%= link_to admin_advert_path(advert), class: 'layui-btn layui-btn-xs layui-btn-danger layui-float-left layout-margin-left-4', data: { turbo: true, turbo_method: :delete, turbo_confirm: '确定要删除吗？' } do %>
+                    <i class="layui-icon layui-icon-delete"></i> 删除
                   <% end %>
                 </td>
               </tr>

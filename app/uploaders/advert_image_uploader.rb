@@ -1,4 +1,4 @@
-class FeedbackImageUploader < BaseUploader
+class AdvertImageUploader < BaseUploader
   process :auto_orient
 
   version :tiny do

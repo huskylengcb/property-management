@@ -19,13 +19,13 @@ module ActiveRecord
       if raw
         if array != []
           enums_for(enum).map{|e| [e.second, e.third] if array.include?(e.third)}.compact
-        else 
+        else
           enums_for(enum).map{|e| [e.second, e.third]}
         end
       else
         if array != []
           enums_for(enum).map{|e| [e.second, e.first] if array.include?(e.third)}.compact
-        else 
+        else
           enums_for(enum).map{|e| [e.second, e.first]}
         end
       end

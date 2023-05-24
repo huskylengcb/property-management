@@ -6,6 +6,8 @@
 #  description :text
 #  name        :string
 #  phone       :string
+#  position    :integer
+#  show_type   :integer
 #  state       :integer
 #  wechat      :string
 #  created_at  :datetime         not null

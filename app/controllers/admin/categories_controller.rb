@@ -1,6 +1,6 @@
 class Admin::CategoriesController < Admin::BaseController
   before_action :set_type
-  before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :set_category, only: %i[ show edit update destroy move]
 
   # GET /categories or /categories.json
   def index
@@ -15,7 +15,6 @@ class Admin::CategoriesController < Admin::BaseController
   def move
     move_target = params[:to]
     return unless ['higher', 'lower', 'to_top', 'to_bottom'].include?(move_target)
-    @category = Category.find(params[:id])
 
     @category.send("move_#{move_target}")
     redirect_back(fallback_location: root_path)

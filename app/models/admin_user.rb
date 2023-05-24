@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id              :bigint           not null, primary key
-#  avatarUrl       :string
+#  avatar_url      :string
 #  gender          :integer
 #  login_name      :string
 #  nickname        :string

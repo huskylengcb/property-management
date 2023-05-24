@@ -25,8 +25,8 @@
 #  index_assets_on_type                     (type)
 #
 
-class Asset::FeedbackImage < Asset
+class Asset::AdvertImage < Asset
 
-  mount_uploader :file, FeedbackImageUploader
+  mount_uploader :file, AdvertImageUploader
 
 end

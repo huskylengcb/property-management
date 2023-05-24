@@ -16,7 +16,7 @@
 class Category < ApplicationRecord
   # include R18n::Translated
   # translations :name
-  
+
   # enum state: {visible: 1, hidden: 2}
   # default_value_for :state, :visible
 
