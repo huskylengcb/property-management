@@ -3,6 +3,7 @@
   <%= hidden_field_tag :type, params[:type] %>
   <div class="form-body">
     <%= f.input :name, label: '名称：', autofocus: true, placeholder: '', hint: '' %>
+    <%= f.input :parent_id, label: '父级分类', collection: Category.parent_options_for_select, autofocus: true, placeholder: '', hint: '' %>
   </div>
 
   <div class="layui-form-item">

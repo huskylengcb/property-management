@@ -26,7 +26,15 @@
           <% end %>
         </dl>
       </li>
-      <li class="layui-nav-item <%= current_nav_class(:admin_adverts, current: 'layui-bg-green active') %>">
+      <li class="layui-nav-item <%= current_nav_class(:admin_vocabularies, current: 'layui-bg-green active') %>">
+        <a href="<%= admin_vocabularies_path%>">
+          <i class="layui-icon layui-icon-layer"></i>
+          <span>词汇管理</span>
+        </a>
+      </li>
+      <%
+=begin%>
+ <li class="layui-nav-item <%= current_nav_class(:admin_adverts, current: 'layui-bg-green active') %>">
         <a href="<%= admin_adverts_path%>">
           <i class="layui-icon layui-icon-layer"></i>
           <span>广告管理</span>
@@ -37,7 +45,9 @@
           <i class="layui-icon layui-icon-layer"></i>
           <span>用户管理</span>
         </a>
-      </li>
+      </li> 
+<%
+=end%>
 
 
       <%
@@ -92,12 +102,16 @@
           <dd><a href="">the links</a></dd>
         </dl>
       </li>
-      <li class="layui-nav-item <%= current_nav_class(:communities, current: 'layui-bg-green active') %>">
+      <%
+=begin%>
+ <li class="layui-nav-item <%= current_nav_class(:communities, current: 'layui-bg-green active') %>">
         <a href="<%= communities_path%>">
           <i class="layui-icon layui-icon-windows"></i>
           <span>社区管理</span>
         </a>
-      </li>
+      </li> 
+<%
+=end%>
     </ul>
   </div>
 </div>

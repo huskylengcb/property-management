@@ -1,0 +1,25 @@
+# == Schema Information
+#
+# Table name: vocabularies
+#
+#  id                     :bigint           not null, primary key
+#  chinese                :string
+#  english                :string
+#  grade                  :string
+#  unit                   :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  vocabulary_category_id :integer
+#
+
+one:
+  english: MyString
+  chinese: MyString
+  vocabulary_category_id: 1
+  word_type: MyString
+
+two:
+  english: MyString
+  chinese: MyString
+  vocabulary_category_id: 1
+  word_type: MyString

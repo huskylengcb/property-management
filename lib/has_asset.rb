@@ -14,10 +14,10 @@ module HasAsset
           if version
             self.try(key).try(:file).try(version)
           else
-            self.try(key).try(:file).try(:url)
+            self.try(key).try(:file).try(:url) || self.try(key).try(:file).default_url
           end
         else
-          return 'default-logo.jpg'
+          return self.try(key).try(:file).default_url
         end
       end
 

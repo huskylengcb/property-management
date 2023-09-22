@@ -16,14 +16,21 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :vocabularies, only: [:index]
+      resources :vocabulary_dictation_logs, only: [:create, :index]
       resources :communities, only: [:index]
       resource :minps do
         collection do
           post 'login'
         end
       end
-      resources :users
+      resources :users do
+        collection do
+          get 'current'
+        end
+      end
       resources :adverts
+      resources :categories
     end
   end
 
@@ -31,6 +38,8 @@ Rails.application.routes.draw do
   delete '/admin/logout' => 'admin/sessions#destroy'
 
   namespace :admin do
+    resources :vocabulary_dictation_logs
+    resources :vocabularies
     resource :main, only: [:show]
     resource :session, only: [:new, :create, :destroy]
     resources :admin_users

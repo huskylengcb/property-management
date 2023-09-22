@@ -35,6 +35,7 @@ class Admin::AdvertsController < Admin::BaseController
 
     respond_to do |format|
       if @advert.save
+        @advert.attach_image(params[:image_id])
         format.html { redirect_to admin_adverts_path, notice: "Advert was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -45,6 +46,7 @@ class Admin::AdvertsController < Admin::BaseController
   def update
     respond_to do |format|
       if @advert.update(advert_params)
+        @advert.attach_image(params[:image_id])
         format.html { redirect_to admin_adverts_path, notice: "Advert was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }

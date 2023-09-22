@@ -31,8 +31,12 @@ class User < ApplicationRecord
   end
 
   def self.generate_nickname
-  
   end
-  
 
+  def detail_builder
+    Jbuilder.new do |json|
+      json.(self, :id, :avatar_url, :phone)
+      json.nickname self.nickname || "微信用户"
+    end.attributes!
+  end
 end

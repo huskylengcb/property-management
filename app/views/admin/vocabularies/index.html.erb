@@ -1,0 +1,101 @@
+<div class="layui-container">
+  <div class="layui-row portlet-title">
+    <fieldset class="layui-elem-field">
+      <legend>词汇管理</legend>
+      <div class="layui-field-box">
+        <div class="layui-row">
+          <div class="layui-col-md11">
+            <%= search_form_for @search, url: admin_vocabularies_path, class: 'form-inline layui-form' do |f| %>
+              <div class="layui-form-item layui-inline">
+                <%= hidden_field_tag :type, params[:type]%>
+                <%= f.label :grade_cont, '年级', class: "layui-form-label layui-inline" %>
+                <%= f.text_field :grade_cont, class: 'layui-input-inline layui-input', placeholder: '年级' %>
+              </div>
+              <button type="submit" class="layui-form-item layui-btn layui-btn-primary layui-inline">搜索</button>
+            <% end %>
+          </div>
+          <div class="layui-col-md1">
+            <%= link_to new_admin_vocabulary_path(type: params[:type]), class: 'layui-btn layui-btn-normal layui-btn-sm', 'data-no-turbolink' => true do %>
+              <i class="layui-icon layui-icon-edit" style="font-size: 12px"></i>
+              <span>创建</span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="portlet-body">
+    <div class="dataTables_wrapper no-footer">
+      <div class="table-scrollable">
+        <table class="layui-table" id="sample_2">
+          <thead>
+            <tr>
+              <th>
+                英文
+              </th>
+              <th>
+                中文
+              </th>
+              <th>
+                词汇类型
+              </th>
+              <th>
+                年级
+              </th>
+              <th>
+                单元
+              </th>
+              <th>
+                创建时间
+              </th>
+              <th>
+                操作
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @vocabularies.each do |vocabulary| %>
+              <tr>
+                <td>
+                  <%= vocabulary.english %>
+                </td>
+                <td>
+                  <%= vocabulary.chinese %>
+                </td>
+                <td>
+                  <%= vocabulary.vocabulary_category.try(:name) %>
+                </td>
+                <td>
+                  <%= vocabulary.grade %>
+                </td>
+                <td>
+                  <%= vocabulary.unit %>
+                </td>
+                <td>
+                  <%= l vocabulary.created_at.to_datetime %>
+                </td>
+                <td>
+                  <%= link_to edit_admin_vocabulary_path(vocabulary), 'data-no-turbolink' => true, class: 'layui-btn layui-btn-xs layui-float-left' do %>
+                    <i class="layui-icon layui-icon-edit"></i> 修改
+                  <% end %>
+                  <%= link_to admin_vocabulary_path(vocabulary), class: 'layui-btn layui-btn-xs layui-btn-danger layui-float-left layout-margin-left-4', data: { turbo: true, turbo_method: :delete, turbo_confirm: '确定要删除吗？' } do %>
+                    <i class="layui-icon layui-icon-delete"></i> 删除
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="col-md-5 col-sm-12">
+          <div class="dataTables_info" id="sample_4_info"><%= paginate_info(@vocabularies) %></div>
+        </div>
+        <div class="col-md-7 col-sm-12">
+          <%= paginate @vocabularies %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -28,6 +28,7 @@ class Advert < ApplicationRecord
   has_one_asset :image, class_name: 'Asset::AdvertImage'
 
   belongs_to :category, class_name: 'Category::AdvertCategory', foreign_key: :category_id
+  belongs_to :user
 
   scope :sorted, -> { order(position: :desc) }
 
@@ -42,9 +43,11 @@ class Advert < ApplicationRecord
 
   def detail_builder
     Jbuilder.new do |json|
-      json.(self, :id, :name, :description, :phone, :wechat, :state, :user_id)
+      json.(self, :id, :name, :description, :phone, :wechat, :state, :user_id, :category_id)
       json.created_at self.created_at.strftime("%Y-%m-%d %H:%M")
       json.updated_at self.updated_at.strftime("%Y-%m-%d %H:%M")
+      json.user self.user.detail_builder
+      json.image_url self.image_url(:tiny).try(:url)
     end.attributes!
   end
 end

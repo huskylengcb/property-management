@@ -3,14 +3,15 @@
 # Table name: categories
 #
 #  id          :bigint           not null, primary key
-#  type        :string
+#  items_count :integer
 #  logo        :string
 #  name        :string
 #  position    :integer
-#  items_count :integer
 #  state       :integer
+#  type        :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  parent_id   :integer
 #
 class Category::AdvertCategory < Category
 

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @admin_vocabulary_dictation_log %>
+
+<div>
+  <%= link_to "Edit this vocabulary dictation log", edit_admin_vocabulary_dictation_log_path(@admin_vocabulary_dictation_log) %> |
+  <%= link_to "Back to vocabulary dictation logs", admin_vocabulary_dictation_logs_path %>
+
+  <%= button_to "Destroy this vocabulary dictation log", @admin_vocabulary_dictation_log, method: :delete %>
+</div>

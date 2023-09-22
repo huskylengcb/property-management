@@ -15,3 +15,6 @@ admin:
     admin_users:
       actions:
         'admin/users': all
+    admin_vocabularies:
+      actions:
+        'admin/vocabularies': all

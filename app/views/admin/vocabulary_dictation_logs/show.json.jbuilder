@@ -1,0 +1,1 @@
+json.partial! "admin_vocabulary_dictation_logs/admin_vocabulary_dictation_log", admin_vocabulary_dictation_log: @admin_vocabulary_dictation_log

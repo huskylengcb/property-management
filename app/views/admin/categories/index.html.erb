@@ -38,6 +38,9 @@
                 名称
               </th>
               <th>
+                父级名称
+              </th>
+              <th>
                 时间
               </th>
               <th>
@@ -56,6 +59,9 @@
                 </td>
                 <td>
                   <%= category.name %>
+                </td>
+                <td>
+                  <%= category.parent.try(:name) || '无' %>
                 </td>
                 <td>
                   <%= l category.created_at.to_date %>

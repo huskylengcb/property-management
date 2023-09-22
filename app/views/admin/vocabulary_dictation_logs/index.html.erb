@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Vocabulary dictation logs</h1>
+
+<div id="admin_vocabulary_dictation_logs">
+  <% @admin_vocabulary_dictation_logs.each do |admin_vocabulary_dictation_log| %>
+    <%= render admin_vocabulary_dictation_log %>
+    <p>
+      <%= link_to "Show this vocabulary dictation log", admin_vocabulary_dictation_log %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New vocabulary dictation log", new_admin_vocabulary_dictation_log_path %>

@@ -1,5 +1,10 @@
 class Api::V1::UsersController < Api::V1::BaseController
-  before_action :set_user
+  before_action :set_user, only: [:update]
+
+  def current
+    current_user = User.find(session[:user_id])
+    api_success(message: '授权成功', data: { currentUser: current_user.detail_builder })
+  end
 
   def update
     if @user.update(user_params)

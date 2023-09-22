@@ -1,0 +1,17 @@
+<%= simple_form_for [:admin, @vocabulary], wrapper: :admin_form, html: { class: 'layui-form' } do |f| %>
+  <%= f.error_notification %>
+  <div class="form-body">
+    <%= f.input :vocabulary_category_id, label: '词汇类型', collection: Category::VocabularyCategory.options_for_select, autofocus: true %>
+    <%= f.input :english, label: '英文' %>
+    <%= f.input :chinese, label: '中文' %>
+    <%= f.input :grade, label: '年级', collection: Vocabulary.grades %>
+    <%= f.input :unit, label: '单元', collection: Vocabulary.units %>
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <%= f.button :submit, '提交', class: 'layui-btn' %>
+      <%= link_to '取消', admin_vocabularies_path, class: 'layui-btn layui-btn-primary' %>
+    </div>
+  </div>
+<% end %>
