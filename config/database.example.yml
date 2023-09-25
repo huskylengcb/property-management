@@ -8,3 +8,12 @@ default: &default
 development:
   <<: *default
   database: property_dev
+
+test: &test
+  <<: *default
+  database: property_test
+
+production:
+  <<: *default
+  database: property_production
+  pool: 20

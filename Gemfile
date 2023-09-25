@@ -1,4 +1,4 @@
-source "https://rubygems.org"
+source 'http://mirrors.tuna.tsinghua.edu.cn/rubygems'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.7.5"
@@ -107,6 +107,12 @@ group :development do
   # gem "spring"
 
   gem 'annotate'
+
+  # 服务器部署
+  gem 'mina'
+  gem 'mina-puma', require: false
+  gem 'mina-sidekiq', require: false
+  gem 'mina-multistage', require: false
 end
 
 group :test do
