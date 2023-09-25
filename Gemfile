@@ -64,6 +64,9 @@ gem 'sass-rails'
 gem 'faraday'
 gem 'faraday_middleware'
 
+# 异步
+gem 'sidekiq'
+
 #配置文件
 gem 'config'
 
