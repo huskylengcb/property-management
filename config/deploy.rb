@@ -22,6 +22,7 @@ set :repository, 'https://gitee.com/huskylengcb/property-management.git'
 #git分支
 set :branch, 'main'
 
+
 # Optional settings:
 set :user, 'app'                 # Username in the server to SSH to.
 #   set :port, '30000'           # SSH port number.
