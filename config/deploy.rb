@@ -18,7 +18,7 @@ set :domain, '139.129.21.65'
 #服务器中项目部署位置
 set :deploy_to, '/apps/www/property-management'
 #git代码仓库
-set :repository, 'https://gitee.com/huskylengcb/property-management.git'
+set :repository, 'git@gitee.com:huskylengcb/property-management.git'
 #git分支
 set :branch, 'main'
 
