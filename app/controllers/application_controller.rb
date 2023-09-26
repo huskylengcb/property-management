@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper Webpacker::Helper
+  # helper Webpacker::Helper
 
   protected
 

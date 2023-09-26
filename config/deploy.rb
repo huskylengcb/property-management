@@ -33,7 +33,7 @@ set :rvm_use_path, '/usr/local/rvm/scripts/rvm'
 # Some plugins already add folders to shared_dirs like `mina/rails` add `public/assets`, `vendor/bundle` and many more
 # run `mina -d` to see all folders and files already included in `shared_dirs` and `shared_files`
 set :shared_dirs, fetch(:shared_dirs, []).push('vendor/bundle', 'public/assets', 'public/uploads', 'tmp/pids', 'tmp/sockets', 'log')
-set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml', 'config/puma.rb', 'config/schedule.rb')
+set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/master.key', 'config/puma.rb', 'config/schedule.rb')
 
 # This task is the environment that is loaded for all remote run commands, such as
 # `mina deploy` or `mina rake`.
@@ -52,6 +52,10 @@ task :setup do
   # command %{rbenv install 2.5.3 --skip-existing}
   # command %{rvm install ruby-2.5.3}
   # command %{gem install bundler}
+  command %[touch "#{fetch(:shared_path)}/config/database.yml"]
+  command %[touch "#{fetch(:shared_path)}/config/master.key"]
+  command %[touch "#{fetch(:shared_path)}/config/puma.rb"]
+  command %[touch "#{fetch(:shared_path)}/config/settings.yml"]
 end
 
 desc "Deploys the current version to the server."
